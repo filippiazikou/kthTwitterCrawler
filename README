@@ -3,7 +3,7 @@ Master Program: Software Engineering of Distributed Systems
 Thesis: Opinion Mining in Social Media
 
 ~~~ Twitter Crawler ~~~
-
+Crawl all tweets, a specific region or specific keywords
 
 usage: twitterCrawler.py [-h] [--location [LOCATION [LOCATION ...]]]
                          [--track [TRACK [TRACK ...]]] [--db DB]
