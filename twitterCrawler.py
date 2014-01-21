@@ -1,3 +1,11 @@
+###
+# KTH - Royal Institute of Technology
+# Twitter Crawler
+# Filippia Zikou
+#
+# Reference: https://github.com/pooria121/TwitterCrawler
+#
+###
 
 
 #!/usr/bin/python
