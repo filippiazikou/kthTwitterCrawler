@@ -1,0 +1,24 @@
+KTH - Royal Institute of Technology
+Master Program: Software Engineering of Distributed Systems
+Thesis: Opinion Mining in Social Media
+
+~~~ Twitter Crawler ~~~
+
+
+usage: twitterCrawler.py [-h] [--location [LOCATION [LOCATION ...]]]
+                         [--track [TRACK [TRACK ...]]] [--db DB]
+
+Twitter Crawler
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --location [LOCATION [LOCATION ...]]
+                        Getting stream of tweets according to location:
+                        <southwestLongitude> <southwestLatitude>
+                        <northeastLongitude> <northeastLatitude>
+  --track [TRACK [TRACK ...]]
+                        Getting stream of tweets tracking the keywords:
+                        <word1> <word2> ...
+  --db DB               Choose the name of collection for database Twitter.
+                        Default: tweets
+
