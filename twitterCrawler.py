@@ -19,6 +19,7 @@ import tweepy
 from pymongo import MongoClient
 import argparse
 import ConfigParser
+import sys
 
 
 # Reading the config file
@@ -86,6 +87,7 @@ class TweetStreamListener(StreamListener):
 
         print doc['id']
         posts.insert(doc)
+        sys.stdout.flush()
 
     def on_status(self, status):
         """this method will handle and parse recieved tweets"""
@@ -132,13 +134,17 @@ def track(words):
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser(description='Twitter Crawler')
 	parser.add_argument('--location', nargs='*', type=float, help='Getting stream of tweets according to location: <southwestLongitude> <southwestLatitude> <northeastLongitude> <northeastLatitude>')
-	parser.add_argument('--track', nargs='*', type=str, help='Getting stream of tweets tracking the keywords: <word1> <word2> ...')
+	parser.add_argument('--track', type=str, help='Getting stream of tweets tracking the keywords from the given file')
 	parser.add_argument('--db', type=str, help='Choose the name of collection for database Twitter. Default: tweets')
 	args = parser.parse_args()
+	if args.db:
+		posts = db[args.db]
 	if args.location:
 		location(args.location)
 	elif args.track:
-		track(args.track)
+		with open(args.track, 'r') as f:
+			keywords = [line.strip() for line in f]
+		track(keywords)
 	else:
 		sample()
 	
