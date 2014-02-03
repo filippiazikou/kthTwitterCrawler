@@ -34,7 +34,7 @@ access_secret = config.get('twitter', 'access_secret')
 language = config.get('twitter', 'language')
 
 
-#Reading database settings
+# Reading database settings
 client = MongoClient()
 db = client[config.get('mongodb', 'db')]
 posts = db[config.get('mongodb', 'schema')]
@@ -136,9 +136,12 @@ if __name__ == '__main__':
 	parser.add_argument('--location', nargs='*', type=float, help='Getting stream of tweets according to location: <southwestLongitude> <southwestLatitude> <northeastLongitude> <northeastLatitude>')
 	parser.add_argument('--track', type=str, help='Getting stream of tweets tracking the keywords from the given file')
 	parser.add_argument('--db', type=str, help='Choose the name of collection for database Twitter. Default: tweets')
+	parser.add_argument('--lang', type=str, help='Choose language of tweets to be crawled. Default: eng')
 	args = parser.parse_args()
 	if args.db:
 		posts = db[args.db]
+	if args.lang:
+		language = args.lang
 	if args.location:
 		location(args.location)
 	elif args.track:
