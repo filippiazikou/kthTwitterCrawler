@@ -2,12 +2,17 @@ KTH - Royal Institute of Technology
 Master Program: Software Engineering of Distributed Systems
 Thesis: Opinion Mining in Social Media
 
+Requirements:
+tweepy:	 pip install tweepy
+pymongo: pip install pymongo
+
 ~~~ Twitter Crawler ~~~
-Crawl all tweets, a specific region or specific keywords
-Create a crawler.cfg file for specifying application and database details
+Crawl tweets from Sweden and save to database 'sweden' or 'sverige' according to the language
+
+Create a crawler.cfg file for application and database specifications.
 
 usage: twitterCrawler.py [-h] [--location [LOCATION [LOCATION ...]]]
-                         [--track [TRACK [TRACK ...]]] [--db DB]
+                         [--track TRACK]
 
 Twitter Crawler
 
@@ -17,9 +22,6 @@ optional arguments:
                         Getting stream of tweets according to location:
                         <southwestLongitude> <southwestLatitude>
                         <northeastLongitude> <northeastLatitude>
-  --track [TRACK [TRACK ...]]
-                        Getting stream of tweets tracking the keywords:
-                        <word1> <word2> ...
-  --db DB               Choose the name of collection for database Twitter.
-                        Default: tweets
+  --track TRACK         Getting stream of tweets tracking the keywords from
+                        the given file
 
